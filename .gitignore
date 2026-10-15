@@ -1,0 +1,8 @@
+# model weights, adapters and generated data outputs are not committed
+models/
+runs/
+*.safetensors
+*.bin
+*.pt
+__pycache__/
+.venv/
