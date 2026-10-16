@@ -54,7 +54,7 @@ def main():
                 print('MISMATCH:')
                 for u, m, h in zip(c, mine + [''] * 20, hay + [''] * 20):
                     print('  U:', u, '\n  mine:', m, '\n  hay: ', h, '' if m == h else '   <<<')
-    eng = hashlib.sha256(open(os.path.join(ROOT, 'eliza', 'eliza-engine.py'), 'rb').read()).hexdigest()[:12]
+    eng = hashlib.sha256(open(os.path.join(ROOT, 'eliza', 'eliza_engine.py'), 'rb').read()).hexdigest()[:12]
     print(f'{datetime.datetime.utcnow().isoformat()}Z seed={a.seed} conversations={len(convs)} turns={total} '
           f'mismatching_conversations={mism} engine_sha256={eng}')
     sys.exit(1 if mism else 0)

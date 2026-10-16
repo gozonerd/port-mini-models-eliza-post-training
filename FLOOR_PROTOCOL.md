@@ -14,7 +14,7 @@ choices for that measurement, written down first so the numbers cannot rewrite t
 | Scoring B | the generated line equals the exact next reply after the same normalization | framing B's definition |
 | Unit | the item for the score; the conversation for any interval (later) | REPTME.E5 |
 | Precision | fp32 on the laptop processor; fp16 if a run moves to a GPU, recorded per run | hardware |
-| Record | `runs/eliza-runs.tsv` row per (model, framing); `runs/<run-id>.items.tsv` per item | REPTME.E8 traceability |
+| Record | `runs/eliza_runs.tsv` row per (model, framing); `runs/<run-id>.items.tsv` per item | REPTME.E8 traceability |
 
 What the floor is for: the contamination measurement (REPTME.E3) and the reference every trained arm's
 lift is measured from. It is reported per model and per framing. It is not a hypothesis and it is not
