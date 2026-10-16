@@ -1,6 +1,6 @@
 """Train a LoRA adapter on one framing, evaluate at fixed points, record everything.
 
-    ~/.venvs/eval-stack/bin/python tools/train_adapter.py --config configs/<arm>.json
+    ~/.venvs/eval-stack/bin/python tools/eliza_train_adapter.py --config configs/<arm>.json
 
 The config is the prespecification's per-arm record (model, revision, framing, steps, learning rate,
 batch, sequence length, LoRA rank/alpha/targets, seed, evaluation points). Nothing is chosen here that
