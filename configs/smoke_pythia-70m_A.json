@@ -1,0 +1,20 @@
+{
+  "_note": "SMOKE TEST ONLY. Not a prespecified arm. 30 steps on pythia-70m to prove the loop runs and the loss moves.",
+  "model": "EleutherAI/pythia-70m",
+  "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42",
+  "framing": "A",
+  "steps": 30,
+  "learning_rate": 0.0005,
+  "batch_size": 8,
+  "grad_accum": 1,
+  "max_seq_len": 256,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.0,
+  "target_modules": ["query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"],
+  "seed": 1,
+  "eval_points": [0, 1.0],
+  "eval_dev_items": 32,
+  "final_eval_split": "dev",
+  "device": "cpu"
+}
