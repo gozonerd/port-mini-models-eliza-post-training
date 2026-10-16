@@ -5,7 +5,7 @@ from the script's word lists and from a public word list (SCOWL, via Debian's wa
 permissive licence). No language model writes anything here. The engine labels every turn, so
 every reply token is one of Weizenbaum's templates.
 
-    python3 tools/generate_data.py --out data --seed 20261015 --train 3000 --dev 400 --test 400
+    python3 tools/eliza_generate_data.py --out data --seed 20261015 --train 3000 --dev 400 --test 400
 
 Outputs, per split: <split>.conversations.jsonl (the canonical record, one conversation per line
 with per-turn traces), <split>.A.jsonl (framing A: single exchange, allowed set), <split>.B.jsonl

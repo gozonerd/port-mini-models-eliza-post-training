@@ -8,7 +8,7 @@ the config does not state; a missing key is an error, not a default.
 
 The base weights stay frozen; only the adapter trains. The loss is next-token cross-entropy on the reply
 tokens only (the prompt tokens are masked out). The prompt format, decoding and scoring are the floor's
-(tools/measure_floor.py) so trained arms and floors are comparable.
+(tools/eliza_measure_floor.py) so trained arms and floors are comparable.
 
 Outputs under runs/: <run-id>.config.json, <run-id>.loss.tsv (step, loss), <run-id>.evals.tsv (one row
 per evaluation point: step, split, framing, n, score), the final adapter in runs/adapters/<run-id>/,
@@ -29,7 +29,7 @@ import time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-from measure_floor import build_prompt, normalize, PROMPT_FORMAT_ID, GREETING  # noqa: E402
+from eliza_measure_floor import build_prompt, normalize, PROMPT_FORMAT_ID, GREETING  # noqa: E402
 
 REQUIRED = ["model", "revision", "framing", "steps", "learning_rate", "batch_size", "grad_accum",
             "max_seq_len", "lora_r", "lora_alpha", "lora_dropout", "target_modules", "seed",

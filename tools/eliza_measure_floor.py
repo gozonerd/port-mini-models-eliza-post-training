@@ -1,6 +1,6 @@
 """Zero-shot floor: score an untrained base model on the held-out test set, both framings.
 
-    ~/.venvs/eval-stack/bin/python tools/measure_floor.py --model EleutherAI/pythia-70m --revision <sha> \
+    ~/.venvs/eval-stack/bin/python tools/eliza_measure_floor.py --model EleutherAI/pythia-70m --revision <sha> \
         [--split test] [--limit N] [--out runs]
 
 Harness choices are fixed in FLOOR_PROTOCOL.md and recorded with every result: the transcript prompt

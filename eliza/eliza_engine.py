@@ -6,7 +6,7 @@ NEWKEY, the three delimiters (comma, period, BUT), the LIMIT counter that gates 
 recall, the mid-square HASH that selects the memory template from the Hollerith encoding
 of the last chunk of the last word, the four built-in NOMACH messages, and the cycling
 of reassembly rules per decomposition rule. Where this port and Hay's binary disagree,
-this port is wrong: tools/verify_against_hay.py is the check.
+this port is wrong: tools/eliza_verify_against_hay.py is the check.
 
 The script is data. Nothing in this file produces a word that is not in the script.
 """

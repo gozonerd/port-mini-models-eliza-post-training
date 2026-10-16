@@ -4,7 +4,7 @@ The sentences here exist only to exercise the engine (keywords, delimiters, memo
 long words, punctuation). They are NOT training data and never leave this check.
 
     g++ -O2 -std=c++17 -o tools/hay-eliza-bin third-party/anthay-ELIZA/eliza.cpp
-    python3 tools/verify_against_hay.py [--n 400] [--seed 20261015]
+    python3 tools/eliza_verify_against_hay.py [--n 400] [--seed 20261015]
 """
 import argparse, random, re, subprocess, sys, os, hashlib, datetime
 

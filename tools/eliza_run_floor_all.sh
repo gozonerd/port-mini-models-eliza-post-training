@@ -22,6 +22,6 @@ until ready; do sleep 30; done
 log "all seven present; starting floor runs"
 for m in "${MODELS[@]}"; do set -- $m
   log "START $1 @ $2"
-  $PY tools/measure_floor.py --model "$1" --revision "$2" --split test --batch 8 --note "floor, FLOOR_PROTOCOL.md" >> runs/floor.log 2>&1 && log "DONE $1" || log "FAILED $1"
+  $PY tools/eliza_measure_floor.py --model "$1" --revision "$2" --split test --batch 8 --note "floor, FLOOR_PROTOCOL.md" >> runs/floor.log 2>&1 && log "DONE $1" || log "FAILED $1"
 done
 log "floor complete"
