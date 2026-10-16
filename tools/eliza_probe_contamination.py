@@ -50,7 +50,7 @@ from test_cacm import EXCHANGES  # noqa: E402
 SCRIPT = os.path.join(ROOT, "third-party", "ELIZA-script-DOCTOR-original-1966-CACM-appendix.txt")
 GREETING = "HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM"
 PROMPT_FORMAT_ID = "transcript-v1"
-PROBE_VERSION = "probe-v1"
+PROBE_VERSION = "probe-v1.1"  # v1 scored the NEWKEY directive as a line; excluded from v1.1 (PROCEDURE 30)
 
 
 def normalize(s: str) -> str:
@@ -70,8 +70,8 @@ def fixed_lines(script) -> list[str]:
     for rule in script.rules.values():
         for t in rule.trans:
             for rr in t.reassembly_rules:
-                if not rr or rr[0] == "=" or rr[0] == "PRE":
-                    continue
+                if not rr or rr[0] == "=" or rr[0] == "PRE" or rr == ["NEWKEY"]:
+                    continue   # NEWKEY is a directive, not a reply
                 if any(tok.isdigit() for tok in rr):
                     continue
                 out.add(" ".join(rr))
