@@ -26,7 +26,9 @@ import re
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-from eliza.engine import Eliza, load_script, split as esplit  # noqa: E402
+from eliza import Eliza, load_script, ENGINE_PATH  # noqa: E402
+from eliza import engine as _engine  # noqa: E402
+esplit = _engine.split
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(ROOT, "third-party", "ELIZA-script-DOCTOR-original-1966-CACM-appendix.txt")
@@ -182,7 +184,7 @@ def main() -> None:
         "wordlist": WORDLIST, "wordlist_sha256": sha256_file(WORDLIST),
         "wordlist_licence": "SCOWL (Kevin Atkinson), permissive; Debian package wamerican",
         "generator_sha256": sha256_file(os.path.abspath(__file__)),
-        "engine_sha256": sha256_file(os.path.join(ROOT, "eliza", "engine.py")),
+        "engine_sha256": sha256_file(ENGINE_PATH),
         "filler_vocabulary_sizes": {k: len(v) for k, v in fillers.items()},
         "splits": {},
     }

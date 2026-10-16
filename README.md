@@ -22,9 +22,9 @@ ELIZA is the one task where the answer key is perfect: the 1966 rule engine give
 | `PROCEDURE.md` | the chronological record of what was done, in order, for the whole mini-model set |
 | `CITATIONS.md` | every outside work used, with the citation and copyright line to reproduce on the portfolio site |
 | `third-party/` | the licence texts and source files themselves, with `SOURCES.tsv` (origin, fetch time, SHA-256, licence) |
-| `eliza/` | the rule engine (a Python port of the 1966 script) and its tests — *to be written* |
-| `data/` | generated training and test sets — *to be written* |
-| `train/`, `eval/` | the adapter training and scoring scripts — *to be written* |
+| `eliza/eliza-engine.py` | the rule engine, a Python port of the 1966 script, verified against Hay's implementation |
+| `data/` | generated training and test sets (see its README) |
+| `tools/` | the generator, the floor scorer, the verification harness; `runs/eliza-runs.tsv` is the run index |
 
 ## Status
 

@@ -8,7 +8,7 @@ import argparse
 import os
 import sys
 
-from .engine import Eliza, load_script
+from . import Eliza, load_script
 
 DEFAULT_SCRIPT = os.path.join(os.path.dirname(__file__), "..", "third-party",
                               "ELIZA-script-DOCTOR-original-1966-CACM-appendix.txt")

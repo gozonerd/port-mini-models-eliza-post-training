@@ -9,7 +9,7 @@ decoding, at most 48 new tokens, the reply taken as the first non-empty generate
 after the script's own normalization for framing B, and membership in the allowed set for framing A.
 
 Outputs: <out>/<run-id>.items.tsv (one row per item: id, framing, expected, got, match) and a row
-appended to <out>/runs.tsv (run id, model, revision, framing, split, n, score, config hash, timestamps,
+appended to <out>/eliza-runs.tsv (run id, model, revision, framing, split, n, score, config hash, timestamps,
 machine). Nothing here trains anything.
 """
 from __future__ import annotations
@@ -111,7 +111,7 @@ def main() -> None:
             results[framing] = {"n": len(rows), "correct": n_ok, "score": n_ok / max(1, len(rows))}
             print(f"{framing}: {n_ok}/{len(rows)} = {results[framing]['score']:.4f}", flush=True)
 
-    runs_path = os.path.join(a.out, "runs.tsv")
+    runs_path = os.path.join(a.out, "eliza-runs.tsv")
     new = not os.path.exists(runs_path)
     with open(runs_path, "a", encoding="utf-8") as f:
         if new:
