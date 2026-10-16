@@ -59,7 +59,12 @@ def main() -> None:
 
     random.seed(cfg["seed"]); torch.manual_seed(cfg["seed"])
     device = cfg["device"]
-    dtype = torch.float32 if device == "cpu" else torch.bfloat16
+    # GPU precision (PRESPEC v04, D2 ruling "fix before", K86): the base model is held in fp16 and the forward pass
+    # runs under fp16 autocast with dynamic loss scaling; the LoRA weights stay fp32 (peft casts adapters up when the
+    # base is half precision). A T4 has no native bfloat16, so the earlier bfloat16 path is replaced. CPU stays fp32.
+    dtype = torch.float32 if device == "cpu" else torch.float16
+    use_amp = device != "cpu"
+    precision = "fp16-amp" if use_amp else "fp32"
     tok = AutoTokenizer.from_pretrained(cfg["model"], revision=cfg["revision"])
     tok.padding_side = "right"
     if tok.pad_token is None:
@@ -70,6 +75,7 @@ def main() -> None:
     lcfg = LoraConfig(r=cfg["lora_r"], lora_alpha=cfg["lora_alpha"], lora_dropout=cfg["lora_dropout"],
                       target_modules=cfg["target_modules"], bias="none", task_type="CAUSAL_LM")
     model = get_peft_model(base, lcfg)
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
     n_train = sum(p.numel() for p in model.parameters() if p.requires_grad)
     n_total = sum(p.numel() for p in model.parameters())
 
@@ -79,7 +85,7 @@ def main() -> None:
     run_id = f"train_{cfg['model'].split('/')[-1]}_{framing}_s{cfg['seed']}_{dt.datetime.now(dt.UTC).strftime('%Y%m%dT%H%M%SZ')}"
     os.makedirs(a.out, exist_ok=True)
     cfg_record = dict(cfg, run_id=run_id, prompt_format=PROMPT_FORMAT_ID, greeting=GREETING,
-                      trainable_params=n_train, total_params=n_total, dtype=str(dtype),
+                      trainable_params=n_train, total_params=n_total, dtype=str(dtype), precision=precision,
                       data_manifest_sha256=hashlib.sha256(open(os.path.join(ROOT, "data", "manifest.json"), "rb").read()).hexdigest()[:12],
                       machine=platform.node(), started_utc=dt.datetime.now(dt.UTC).isoformat())
     json.dump(cfg_record, open(os.path.join(a.out, f"{run_id}.config.json"), "w"), indent=2)
@@ -117,7 +123,8 @@ def main() -> None:
             for i in range(0, len(rows), bs):
                 batch = rows[i: i + bs]
                 enc = tok([build_prompt(r.get("history", []), r["user"]) for r in batch], return_tensors="pt", padding=True).to(device)
-                out = model.generate(**enc, max_new_tokens=48, do_sample=False, pad_token_id=tok.pad_token_id)
+                with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=use_amp):
+                    out = model.generate(**enc, max_new_tokens=48, do_sample=False, pad_token_id=tok.pad_token_id)
                 texts = tok.batch_decode(out[:, enc["input_ids"].shape[1]:], skip_special_tokens=True)
                 for r, t in zip(batch, texts):
                     g = normalize(next((ln for ln in t.split("\n") if ln.strip()), ""))
@@ -156,11 +163,14 @@ def main() -> None:
             batch = [train_rows[j] for j in order[pos: pos + cfg["batch_size"]]]
             pos += cfg["batch_size"]
             ids, att, lab = encode(batch)
-            loss = model(input_ids=ids, attention_mask=att, labels=lab).loss / cfg["grad_accum"]
-            loss.backward()
+            with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=use_amp):
+                loss = model(input_ids=ids, attention_mask=att, labels=lab).loss / cfg["grad_accum"]
+            scaler.scale(loss).backward()
             total += loss.item()
+        scaler.unscale_(opt)
         torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad], 1.0)
-        opt.step()
+        scaler.step(opt)
+        scaler.update()
         loss_f.write(f"{step}\t{total:.4f}\t{time.time() - t0:.0f}\n"); loss_f.flush()
         if wb:
             wb.log({"train/loss": total, "step": step})
