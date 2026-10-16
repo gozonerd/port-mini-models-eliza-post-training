@@ -5,7 +5,7 @@
 
 Harness choices are fixed in FLOOR_PROTOCOL.md and recorded with every result: the transcript prompt
 format (greeting line, then alternating user line and reply line, reply lines in capitals), greedy
-decoding, at most 48 new tokens, the generated text cut at the first newline. Scoring is exact match
+decoding, at most 48 new tokens, the reply taken as the first non-empty generated line. Scoring is exact match
 after the script's own normalization for framing B, and membership in the allowed set for framing A.
 
 Outputs: <out>/<run-id>.items.tsv (one row per item: id, framing, expected, got, match) and a row
@@ -64,11 +64,10 @@ def main() -> None:
         tok.pad_token = tok.eos_token
     dtype = torch.float32 if a.device == "cpu" else torch.float16
     model = AutoModelForCausalLM.from_pretrained(a.model, revision=a.revision, torch_dtype=dtype).to(a.device).eval()
-    nl_ids = [i for i in range(len(tok)) if "\n" in tok.decode([i])][:64]
 
     config = {"prompt_format": PROMPT_FORMAT_ID, "greeting": GREETING, "decoding": "greedy",
               "max_new_tokens": a.max_new_tokens, "dtype": str(dtype), "device": a.device,
-              "normalization": "upper, whitespace-collapsed, cut at first newline"}
+              "normalization": "first non-empty line, upper, whitespace-collapsed"}
     config_hash = hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()[:12]
     run_id = f"floor_{a.model.split('/')[-1]}_{a.split}_{dt.datetime.now(dt.UTC).strftime('%Y%m%dT%H%M%SZ')}"
     started = dt.datetime.now(dt.UTC).isoformat()
@@ -77,10 +76,11 @@ def main() -> None:
         enc = tok(prompts, return_tensors="pt", padding=True).to(a.device)
         with torch.no_grad():
             out = model.generate(**enc, max_new_tokens=a.max_new_tokens, do_sample=False,
-                                 pad_token_id=tok.pad_token_id, eos_token_id=nl_ids + [tok.eos_token_id])
+                                 pad_token_id=tok.pad_token_id, eos_token_id=tok.eos_token_id)
         gen = out[:, enc["input_ids"].shape[1]:]
         texts = tok.batch_decode(gen, skip_special_tokens=True)
-        return [t.split("\n")[0] for t in texts]
+        # the reply is the first non-empty line of the continuation (a model may open with a newline)
+        return [next((ln for ln in t.split("\n") if ln.strip()), "") for t in texts]
 
     results = {}
     items_path = os.path.join(a.out, f"{run_id}.items.tsv")
