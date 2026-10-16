@@ -5,7 +5,7 @@
   "wordlist": "/usr/share/dict/american-english",
   "wordlist_sha256": "9e66281f7e51445eab6857488ff6e3d768afffadb7fb1adbef5e4617bee4a53b",
   "wordlist_licence": "SCOWL (Kevin Atkinson), permissive; Debian package wamerican",
-  "generator_sha256": "40d1fa2087dc9bd9ab1ed9371231203291336a4839d0b8cc644d10472979b6f4",
+  "generator_sha256": "0180a250d20d8280c0353547ab46ba430c6d122a09a7ca572adbc2b37f2e0ad0",
   "engine_sha256": "904428617d82b226d15f388644b5b92945406a2cc292212961f36707d5df55e4",
   "filler_vocabulary_sizes": {
     "train": 11843,
