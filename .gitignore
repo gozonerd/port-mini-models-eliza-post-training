@@ -8,3 +8,4 @@ __pycache__/
 .venv/
 tools/hay-eliza-bin
 data/train.*.jsonl
+runs/*.items.tsv
