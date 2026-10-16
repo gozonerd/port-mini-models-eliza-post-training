@@ -1,0 +1,26 @@
+{
+  "run_id": "floor_SmolLM2-135M_test_20261016T014755Z",
+  "config": {
+    "prompt_format": "transcript-v1",
+    "greeting": "HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM",
+    "decoding": "greedy",
+    "max_new_tokens": 48,
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "normalization": "first non-empty line, upper, whitespace-collapsed"
+  },
+  "results": {
+    "A": {
+      "n": 2695,
+      "correct": 0,
+      "score": 0.0
+    },
+    "B": {
+      "n": 2695,
+      "correct": 9,
+      "score": 0.003339517625231911
+    }
+  },
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2"
+}

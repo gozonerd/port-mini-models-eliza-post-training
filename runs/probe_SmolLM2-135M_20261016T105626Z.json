@@ -1,0 +1,39 @@
+{
+  "run_id": "probe_SmolLM2-135M_20261016T105626Z",
+  "config": {
+    "probe_version": "probe-v1",
+    "prompt_format": "transcript-v1",
+    "greeting": "HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM",
+    "scoring": "mean per-token NLL (nats) over the line's tokens, bare context: BOS + line + newline",
+    "shuffles": 5,
+    "n_reference": 60,
+    "seed": 20261015,
+    "dtype": "torch.float16",
+    "device": "cuda",
+    "n_fixed_lines": 87,
+    "cacm_exchanges": 15,
+    "script_sha256": "fe6750220c04ef7f0e48a7a85277cce5cfc219afda798e6bda5fb22f3d1cbdab"
+  },
+  "results": {
+    "cacm_recital": {
+      "n": 15,
+      "matches": 0,
+      "score": 0.0
+    },
+    "fixed_margin": {
+      "n": 87,
+      "median": 1.039192247390747,
+      "mean": 0.9938073624139545
+    },
+    "reference_margin": {
+      "n": 60,
+      "median": 0.983231592178345,
+      "mean": 1.0444647272427876
+    },
+    "contamination_signal": 0.0559606552124019
+  },
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "started_utc": "2026-10-16T10:56:26.798903+00:00",
+  "finished_utc": "2026-10-16T10:57:45.752342+00:00"
+}

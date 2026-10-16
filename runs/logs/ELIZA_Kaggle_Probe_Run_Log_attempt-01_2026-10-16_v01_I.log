@@ -1,0 +1,234 @@
+[{"stream_name":"stderr","time":7.10209357,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.102155342,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.161408077,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.161462307,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.161469105,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.161474332,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.877599707,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.877651321,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.877656391,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.87765961,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.554100725,"data":"repo at 8bd6a37673ed799b3d0c535cd89c879c213cac9d\n"}
+,{"stream_name":"stdout","time":24.594430268,"data":"torch 2.11.0+cu128 cuda True Tesla T4\n"}
+,{"stream_name":"stdout","time":24.607550073,"data":"===== EleutherAI/pythia-70m a39f36b100fe8a5377810d56c3f4789b9c53ac42\n"}
+,{"stream_name":"stdout","time":72.419752424,"data":"fixed lines: 87 scored, median margin 0.980 (5s)\n"}
+,{"stream_name":"stdout","time":72.4197978,"data":"reference lines: 60 scored, median margin 1.061 (8s)\n"}
+,{"stream_name":"stdout","time":72.419804658,"data":"CACM recital: 0/15 (13s)\n"}
+,{"stream_name":"stdout","time":72.419809872,"data":"{\n"}
+,{"stream_name":"stdout","time":72.419814847,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":72.41982013,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":72.41982511,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":72.419830135,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":72.41983574,"data":"  },\n"}
+,{"stream_name":"stdout","time":72.41984082,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":72.41984667,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":72.419851797,"data":"    \"median\": 0.9797063827514645,\n"}
+,{"stream_name":"stdout","time":72.419857073,"data":"    \"mean\": 1.049938606941837\n"}
+,{"stream_name":"stdout","time":72.419862417,"data":"  },\n"}
+,{"stream_name":"stdout","time":72.419866897,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":72.419871862,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":72.41987688,"data":"    \"median\": 1.0614083290100096,\n"}
+,{"stream_name":"stdout","time":72.419881872,"data":"    \"mean\": 1.0317635202407838\n"}
+,{"stream_name":"stdout","time":72.41988703,"data":"  },\n"}
+,{"stream_name":"stdout","time":72.419891967,"data":"  \"contamination_signal\": -0.0817019462585451\n"}
+,{"stream_name":"stdout","time":72.41989725,"data":"}\n"}
+,{"stream_name":"stdout","time":72.419901982,"data":"wrote runs/probe_pythia-70m_20261016T105557Z.lines.tsv runs/probe_pythia-70m_20261016T105557Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":72.41992835,"data":"\n"}
+,{"stream_name":"stdout","time":72.419932502,"data":"\n"}
+,{"stream_name":"stdout","time":72.419936227,"data":"EleutherAI/pythia-70m: 48s\n"}
+,{"stream_name":"stdout","time":72.420885011,"data":"===== HuggingFaceTB/SmolLM2-135M 93efa2f097d58c2a74874c7e644dbc9b0cee75a2\n"}
+,{"stream_name":"stdout","time":164.756127753,"data":"fixed lines: 87 scored, median margin 1.039 (30s)\n"}
+,{"stream_name":"stdout","time":164.756167846,"data":"reference lines: 60 scored, median margin 0.983 (49s)\n"}
+,{"stream_name":"stdout","time":164.756179519,"data":"CACM recital: 0/15 (79s)\n"}
+,{"stream_name":"stdout","time":164.756185223,"data":"{\n"}
+,{"stream_name":"stdout","time":164.756190066,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":164.756195312,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":164.756200402,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":164.756205546,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":164.756210673,"data":"  },\n"}
+,{"stream_name":"stdout","time":164.756215918,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":164.756221129,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":164.756226308,"data":"    \"median\": 1.039192247390747,\n"}
+,{"stream_name":"stdout","time":164.756232435,"data":"    \"mean\": 0.9938073624139545\n"}
+,{"stream_name":"stdout","time":164.756239626,"data":"  },\n"}
+,{"stream_name":"stdout","time":164.756245324,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":164.756250721,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":164.756255896,"data":"    \"median\": 0.983231592178345,\n"}
+,{"stream_name":"stdout","time":164.756261496,"data":"    \"mean\": 1.0444647272427876\n"}
+,{"stream_name":"stdout","time":164.756266661,"data":"  },\n"}
+,{"stream_name":"stdout","time":164.756271699,"data":"  \"contamination_signal\": 0.0559606552124019\n"}
+,{"stream_name":"stdout","time":164.756276973,"data":"}\n"}
+,{"stream_name":"stdout","time":164.756281991,"data":"wrote runs/probe_SmolLM2-135M_20261016T105626Z.lines.tsv runs/probe_SmolLM2-135M_20261016T105626Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":164.756288208,"data":"\n"}
+,{"stream_name":"stdout","time":164.756293599,"data":"\n"}
+,{"stream_name":"stdout","time":164.757306621,"data":"HuggingFaceTB/SmolLM2-135M: 92s\n"}
+,{"stream_name":"stdout","time":164.758314268,"data":"===== EleutherAI/pythia-160m 50f5173d932e8e61f858120bcb800b97af589f46\n"}
+,{"stream_name":"stdout","time":198.614306237,"data":"fixed lines: 87 scored, median margin 1.147 (8s)\n"}
+,{"stream_name":"stdout","time":198.614351399,"data":"reference lines: 60 scored, median margin 1.143 (12s)\n"}
+,{"stream_name":"stdout","time":198.614359496,"data":"CACM recital: 0/15 (20s)\n"}
+,{"stream_name":"stdout","time":198.614365425,"data":"{\n"}
+,{"stream_name":"stdout","time":198.614371317,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":198.614377058,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":198.614382733,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":198.614388849,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":198.614394533,"data":"  },\n"}
+,{"stream_name":"stdout","time":198.614399738,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":198.614405111,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":198.614410553,"data":"    \"median\": 1.146696472167969,\n"}
+,{"stream_name":"stdout","time":198.614425481,"data":"    \"mean\": 1.1395022633431973\n"}
+,{"stream_name":"stdout","time":198.61443027,"data":"  },\n"}
+,{"stream_name":"stdout","time":198.614434561,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":198.614439809,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":198.614444226,"data":"    \"median\": 1.1432317733764648,\n"}
+,{"stream_name":"stdout","time":198.614449197,"data":"    \"mean\": 1.1656628783543905\n"}
+,{"stream_name":"stdout","time":198.61445431,"data":"  },\n"}
+,{"stream_name":"stdout","time":198.614458656,"data":"  \"contamination_signal\": 0.0034646987915043503\n"}
+,{"stream_name":"stdout","time":198.614463339,"data":"}\n"}
+,{"stream_name":"stdout","time":198.614467589,"data":"wrote runs/probe_pythia-160m_20261016T105759Z.lines.tsv runs/probe_pythia-160m_20261016T105759Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":198.614472443,"data":"\n"}
+,{"stream_name":"stdout","time":198.614476323,"data":"\n"}
+,{"stream_name":"stdout","time":198.615589935,"data":"EleutherAI/pythia-160m: 34s\n"}
+,{"stream_name":"stdout","time":198.616738044,"data":"===== HuggingFaceTB/SmolLM2-360M f8027fd0eaeea54caa13c31d31b9fdc459c38b49\n"}
+,{"stream_name":"stdout","time":301.155165344,"data":"fixed lines: 87 scored, median margin 1.207 (33s)\n"}
+,{"stream_name":"stdout","time":301.155209312,"data":"reference lines: 60 scored, median margin 1.073 (55s)\n"}
+,{"stream_name":"stdout","time":301.155216198,"data":"CACM recital: 0/15 (88s)\n"}
+,{"stream_name":"stdout","time":301.155221819,"data":"{\n"}
+,{"stream_name":"stdout","time":301.15522658,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":301.155231175,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":301.155235651,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":301.155240554,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":301.155245355,"data":"  },\n"}
+,{"stream_name":"stdout","time":301.155249782,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":301.155254345,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":301.155258981,"data":"    \"median\": 1.2067410469055178,\n"}
+,{"stream_name":"stdout","time":301.155263701,"data":"    \"mean\": 1.1089137510321605\n"}
+,{"stream_name":"stdout","time":301.155268759,"data":"  },\n"}
+,{"stream_name":"stdout","time":301.155274335,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":301.155279159,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":301.155284703,"data":"    \"median\": 1.0732575893402099,\n"}
+,{"stream_name":"stdout","time":301.155289626,"data":"    \"mean\": 1.0958777443567913\n"}
+,{"stream_name":"stdout","time":301.15529452,"data":"  },\n"}
+,{"stream_name":"stdout","time":301.155299017,"data":"  \"contamination_signal\": 0.13348345756530788\n"}
+,{"stream_name":"stdout","time":301.155303567,"data":"}\n"}
+,{"stream_name":"stdout","time":301.155307976,"data":"wrote runs/probe_SmolLM2-360M_20261016T105834Z.lines.tsv runs/probe_SmolLM2-360M_20261016T105834Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":301.155432981,"data":"\n"}
+,{"stream_name":"stdout","time":301.155446644,"data":"\n"}
+,{"stream_name":"stdout","time":301.156308771,"data":"HuggingFaceTB/SmolLM2-360M: 103s\n"}
+,{"stream_name":"stdout","time":301.157236026,"data":"===== EleutherAI/pythia-410m 9879c9b5f8bea9051dcb0e68dff21493d67e9d4f\n"}
+,{"stream_name":"stdout","time":357.763076686,"data":"fixed lines: 87 scored, median margin 1.363 (14s)\n"}
+,{"stream_name":"stdout","time":357.76315739,"data":"reference lines: 60 scored, median margin 1.183 (23s)\n"}
+,{"stream_name":"stdout","time":357.763164558,"data":"CACM recital: 0/15 (37s)\n"}
+,{"stream_name":"stdout","time":357.763168604,"data":"{\n"}
+,{"stream_name":"stdout","time":357.763172666,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":357.763194665,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":357.763198798,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":357.763202752,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":357.763206694,"data":"  },\n"}
+,{"stream_name":"stdout","time":357.76321064,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":357.763214503,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":357.763218489,"data":"    \"median\": 1.3625475883483888,\n"}
+,{"stream_name":"stdout","time":357.76322255,"data":"    \"mean\": 1.334915168806054\n"}
+,{"stream_name":"stdout","time":357.763226639,"data":"  },\n"}
+,{"stream_name":"stdout","time":357.763230555,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":357.76323478,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":357.76324684,"data":"    \"median\": 1.1833818674087526,\n"}
+,{"stream_name":"stdout","time":357.763251238,"data":"    \"mean\": 1.2184614038467407\n"}
+,{"stream_name":"stdout","time":357.763255019,"data":"  },\n"}
+,{"stream_name":"stdout","time":357.763258625,"data":"  \"contamination_signal\": 0.17916572093963623\n"}
+,{"stream_name":"stdout","time":357.763262625,"data":"}\n"}
+,{"stream_name":"stdout","time":357.763266468,"data":"wrote runs/probe_pythia-410m_20261016T110021Z.lines.tsv runs/probe_pythia-410m_20261016T110021Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":357.76327104,"data":"\n"}
+,{"stream_name":"stdout","time":357.763274798,"data":"\n"}
+,{"stream_name":"stdout","time":357.764271745,"data":"EleutherAI/pythia-410m: 57s\n"}
+,{"stream_name":"stdout","time":357.765200835,"data":"===== EleutherAI/pythia-1b f73d7dcc545c8bd326d8559c8ef84ffe92fea6b2\n"}
+,{"stream_name":"stdout","time":403.705025862,"data":"fixed lines: 87 scored, median margin 1.404 (10s)\n"}
+,{"stream_name":"stdout","time":403.705098582,"data":"reference lines: 60 scored, median margin 1.183 (17s)\n"}
+,{"stream_name":"stdout","time":403.705107898,"data":"CACM recital: 0/15 (27s)\n"}
+,{"stream_name":"stdout","time":403.705113927,"data":"{\n"}
+,{"stream_name":"stdout","time":403.705118896,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":403.705123912,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":403.705128897,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":403.705133841,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":403.705138692,"data":"  },\n"}
+,{"stream_name":"stdout","time":403.705143992,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":403.705150098,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":403.705154815,"data":"    \"median\": 1.4044236183166507,\n"}
+,{"stream_name":"stdout","time":403.705160127,"data":"    \"mean\": 1.3668664515703575\n"}
+,{"stream_name":"stdout","time":403.705183947,"data":"  },\n"}
+,{"stream_name":"stdout","time":403.705189817,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":403.705196379,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":403.705202356,"data":"    \"median\": 1.1828577041625978,\n"}
+,{"stream_name":"stdout","time":403.705207722,"data":"    \"mean\": 1.1712473686536156\n"}
+,{"stream_name":"stdout","time":403.705212593,"data":"  },\n"}
+,{"stream_name":"stdout","time":403.70522615,"data":"  \"contamination_signal\": 0.2215659141540529\n"}
+,{"stream_name":"stdout","time":403.705230297,"data":"}\n"}
+,{"stream_name":"stdout","time":403.705234173,"data":"wrote runs/probe_pythia-1b_20261016T110117Z.lines.tsv runs/probe_pythia-1b_20261016T110117Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":403.705238546,"data":"\n"}
+,{"stream_name":"stdout","time":403.70524909,"data":"\n"}
+,{"stream_name":"stdout","time":403.706239119,"data":"EleutherAI/pythia-1b: 46s\n"}
+,{"stream_name":"stdout","time":403.707071721,"data":"===== HuggingFaceTB/SmolLM2-1.7B effd688a12921b4cc83e3312b6feb579f70f9c71\n"}
+,{"stream_name":"stdout","time":488.579622898,"data":"fixed lines: 87 scored, median margin 1.404 (18s)\n"}
+,{"stream_name":"stdout","time":488.579681127,"data":"reference lines: 60 scored, median margin 1.074 (30s)\n"}
+,{"stream_name":"stdout","time":488.579689162,"data":"CACM recital: 0/15 (51s)\n"}
+,{"stream_name":"stdout","time":488.579694495,"data":"{\n"}
+,{"stream_name":"stdout","time":488.579700242,"data":"  \"cacm_recital\": {\n"}
+,{"stream_name":"stdout","time":488.579705596,"data":"    \"n\": 15,\n"}
+,{"stream_name":"stdout","time":488.579710684,"data":"    \"matches\": 0,\n"}
+,{"stream_name":"stdout","time":488.57971561,"data":"    \"score\": 0.0\n"}
+,{"stream_name":"stdout","time":488.57972057,"data":"  },\n"}
+,{"stream_name":"stdout","time":488.579725327,"data":"  \"fixed_margin\": {\n"}
+,{"stream_name":"stdout","time":488.579730311,"data":"    \"n\": 87,\n"}
+,{"stream_name":"stdout","time":488.579735138,"data":"    \"median\": 1.403795289993286,\n"}
+,{"stream_name":"stdout","time":488.579740162,"data":"    \"mean\": 1.3104276404983697\n"}
+,{"stream_name":"stdout","time":488.57974521,"data":"  },\n"}
+,{"stream_name":"stdout","time":488.579757299,"data":"  \"reference_margin\": {\n"}
+,{"stream_name":"stdout","time":488.579778714,"data":"    \"n\": 60,\n"}
+,{"stream_name":"stdout","time":488.57978459,"data":"    \"median\": 1.073547124862671,\n"}
+,{"stream_name":"stdout","time":488.579790218,"data":"    \"mean\": 1.1478028655052186\n"}
+,{"stream_name":"stdout","time":488.579795752,"data":"  },\n"}
+,{"stream_name":"stdout","time":488.579801059,"data":"  \"contamination_signal\": 0.33024816513061506\n"}
+,{"stream_name":"stdout","time":488.579807489,"data":"}\n"}
+,{"stream_name":"stdout","time":488.579813325,"data":"wrote runs/probe_SmolLM2-1.7B_20261016T110219Z.lines.tsv runs/probe_SmolLM2-1.7B_20261016T110219Z.cacm.tsv\n"}
+,{"stream_name":"stdout","time":488.579819387,"data":"\n"}
+,{"stream_name":"stdout","time":488.579824164,"data":"\n"}
+,{"stream_name":"stdout","time":488.58083697,"data":"HuggingFaceTB/SmolLM2-1.7B: 85s\n"}
+,{"stream_name":"stdout","time":488.605080918,"data":"run_id\tkind\tmodel\trevision\tmeasure\tn\tvalue\tconfig_hash\tstarted_utc\tfinished_utc\tmachine\tdtype\tnote\n"}
+,{"stream_name":"stdout","time":488.605118924,"data":"probe_pythia-70m_20261016T105557Z\tprobe\tEleutherAI/pythia-70m\ta39f36b100fe8a5377810d56c3f4789b9c53ac42\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T10:55:57.059412+00:00\t2026-10-16T10:56:10.186599+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605135336,"data":"probe_pythia-70m_20261016T105557Z\tprobe\tEleutherAI/pythia-70m\ta39f36b100fe8a5377810d56c3f4789b9c53ac42\tfixed_margin_median\t87\t0.9797\t562e67d2d7f9\t2026-10-16T10:55:57.059412+00:00\t2026-10-16T10:56:10.186599+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605185732,"data":"probe_pythia-70m_20261016T105557Z\tprobe\tEleutherAI/pythia-70m\ta39f36b100fe8a5377810d56c3f4789b9c53ac42\treference_margin_median\t60\t1.0614\t562e67d2d7f9\t2026-10-16T10:55:57.059412+00:00\t2026-10-16T10:56:10.186599+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605193346,"data":"probe_pythia-70m_20261016T105557Z\tprobe\tEleutherAI/pythia-70m\ta39f36b100fe8a5377810d56c3f4789b9c53ac42\tcontamination_signal\t87\t-0.0817\t562e67d2d7f9\t2026-10-16T10:55:57.059412+00:00\t2026-10-16T10:56:10.186599+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605200132,"data":"probe_SmolLM2-135M_20261016T105626Z\tprobe\tHuggingFaceTB/SmolLM2-135M\t93efa2f097d58c2a74874c7e644dbc9b0cee75a2\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T10:56:26.798903+00:00\t2026-10-16T10:57:45.752342+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605205449,"data":"probe_SmolLM2-135M_20261016T105626Z\tprobe\tHuggingFaceTB/SmolLM2-135M\t93efa2f097d58c2a74874c7e644dbc9b0cee75a2\tfixed_margin_median\t87\t1.0392\t562e67d2d7f9\t2026-10-16T10:56:26.798903+00:00\t2026-10-16T10:57:45.752342+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605214159,"data":"probe_SmolLM2-135M_20261016T105626Z\tprobe\tHuggingFaceTB/SmolLM2-135M\t93efa2f097d58c2a74874c7e644dbc9b0cee75a2\treference_margin_median\t60\t0.9832\t562e67d2d7f9\t2026-10-16T10:56:26.798903+00:00\t2026-10-16T10:57:45.752342+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605219581,"data":"probe_SmolLM2-135M_20261016T105626Z\tprobe\tHuggingFaceTB/SmolLM2-135M\t93efa2f097d58c2a74874c7e644dbc9b0cee75a2\tcontamination_signal\t87\t0.0560\t562e67d2d7f9\t2026-10-16T10:56:26.798903+00:00\t2026-10-16T10:57:45.752342+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605225192,"data":"probe_pythia-160m_20261016T105759Z\tprobe\tEleutherAI/pythia-160m\t50f5173d932e8e61f858120bcb800b97af589f46\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T10:57:59.469637+00:00\t2026-10-16T10:58:19.704268+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605231259,"data":"probe_pythia-160m_20261016T105759Z\tprobe\tEleutherAI/pythia-160m\t50f5173d932e8e61f858120bcb800b97af589f46\tfixed_margin_median\t87\t1.1467\t562e67d2d7f9\t2026-10-16T10:57:59.469637+00:00\t2026-10-16T10:58:19.704268+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605237592,"data":"probe_pythia-160m_20261016T105759Z\tprobe\tEleutherAI/pythia-160m\t50f5173d932e8e61f858120bcb800b97af589f46\treference_margin_median\t60\t1.1432\t562e67d2d7f9\t2026-10-16T10:57:59.469637+00:00\t2026-10-16T10:58:19.704268+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605243047,"data":"probe_pythia-160m_20261016T105759Z\tprobe\tEleutherAI/pythia-160m\t50f5173d932e8e61f858120bcb800b97af589f46\tcontamination_signal\t87\t0.0035\t562e67d2d7f9\t2026-10-16T10:57:59.469637+00:00\t2026-10-16T10:58:19.704268+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605254546,"data":"probe_SmolLM2-360M_20261016T105834Z\tprobe\tHuggingFaceTB/SmolLM2-360M\tf8027fd0eaeea54caa13c31d31b9fdc459c38b49\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T10:58:34.346871+00:00\t2026-10-16T11:00:02.185575+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605262021,"data":"probe_SmolLM2-360M_20261016T105834Z\tprobe\tHuggingFaceTB/SmolLM2-360M\tf8027fd0eaeea54caa13c31d31b9fdc459c38b49\tfixed_margin_median\t87\t1.2067\t562e67d2d7f9\t2026-10-16T10:58:34.346871+00:00\t2026-10-16T11:00:02.185575+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.60526958,"data":"probe_SmolLM2-360M_20261016T105834Z\tprobe\tHuggingFaceTB/SmolLM2-360M\tf8027fd0eaeea54caa13c31d31b9fdc459c38b49\treference_margin_median\t60\t1.0733\t562e67d2d7f9\t2026-10-16T10:58:34.346871+00:00\t2026-10-16T11:00:02.185575+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605276088,"data":"probe_SmolLM2-360M_20261016T105834Z\tprobe\tHuggingFaceTB/SmolLM2-360M\tf8027fd0eaeea54caa13c31d31b9fdc459c38b49\tcontamination_signal\t87\t0.1335\t562e67d2d7f9\t2026-10-16T10:58:34.346871+00:00\t2026-10-16T11:00:02.185575+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605282389,"data":"probe_pythia-410m_20261016T110021Z\tprobe\tEleutherAI/pythia-410m\t9879c9b5f8bea9051dcb0e68dff21493d67e9d4f\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T11:00:21.668476+00:00\t2026-10-16T11:00:58.852351+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605288826,"data":"probe_pythia-410m_20261016T110021Z\tprobe\tEleutherAI/pythia-410m\t9879c9b5f8bea9051dcb0e68dff21493d67e9d4f\tfixed_margin_median\t87\t1.3625\t562e67d2d7f9\t2026-10-16T11:00:21.668476+00:00\t2026-10-16T11:00:58.852351+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605294539,"data":"probe_pythia-410m_20261016T110021Z\tprobe\tEleutherAI/pythia-410m\t9879c9b5f8bea9051dcb0e68dff21493d67e9d4f\treference_margin_median\t60\t1.1834\t562e67d2d7f9\t2026-10-16T11:00:21.668476+00:00\t2026-10-16T11:00:58.852351+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605301117,"data":"probe_pythia-410m_20261016T110021Z\tprobe\tEleutherAI/pythia-410m\t9879c9b5f8bea9051dcb0e68dff21493d67e9d4f\tcontamination_signal\t87\t0.1792\t562e67d2d7f9\t2026-10-16T11:00:21.668476+00:00\t2026-10-16T11:00:58.852351+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605307406,"data":"probe_pythia-1b_20261016T110117Z\tprobe\tEleutherAI/pythia-1b\tf73d7dcc545c8bd326d8559c8ef84ffe92fea6b2\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T11:01:17.674576+00:00\t2026-10-16T11:01:44.817029+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605318682,"data":"probe_pythia-1b_20261016T110117Z\tprobe\tEleutherAI/pythia-1b\tf73d7dcc545c8bd326d8559c8ef84ffe92fea6b2\tfixed_margin_median\t87\t1.4044\t562e67d2d7f9\t2026-10-16T11:01:17.674576+00:00\t2026-10-16T11:01:44.817029+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605323508,"data":"probe_pythia-1b_20261016T110117Z\tprobe\tEleutherAI/pythia-1b\tf73d7dcc545c8bd326d8559c8ef84ffe92fea6b2\treference_margin_median\t60\t1.1829\t562e67d2d7f9\t2026-10-16T11:01:17.674576+00:00\t2026-10-16T11:01:44.817029+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605328241,"data":"probe_pythia-1b_20261016T110117Z\tprobe\tEleutherAI/pythia-1b\tf73d7dcc545c8bd326d8559c8ef84ffe92fea6b2\tcontamination_signal\t87\t0.2216\t562e67d2d7f9\t2026-10-16T11:01:17.674576+00:00\t2026-10-16T11:01:44.817029+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605333233,"data":"probe_SmolLM2-1.7B_20261016T110219Z\tprobe\tHuggingFaceTB/SmolLM2-1.7B\teffd688a12921b4cc83e3312b6feb579f70f9c71\tcacm_recital\t15\t0.0000\t562e67d2d7f9\t2026-10-16T11:02:19.082363+00:00\t2026-10-16T11:03:09.652253+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605338778,"data":"probe_SmolLM2-1.7B_20261016T110219Z\tprobe\tHuggingFaceTB/SmolLM2-1.7B\teffd688a12921b4cc83e3312b6feb579f70f9c71\tfixed_margin_median\t87\t1.4038\t562e67d2d7f9\t2026-10-16T11:02:19.082363+00:00\t2026-10-16T11:03:09.652253+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605343995,"data":"probe_SmolLM2-1.7B_20261016T110219Z\tprobe\tHuggingFaceTB/SmolLM2-1.7B\teffd688a12921b4cc83e3312b6feb579f70f9c71\treference_margin_median\t60\t1.0735\t562e67d2d7f9\t2026-10-16T11:02:19.082363+00:00\t2026-10-16T11:03:09.652253+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605349585,"data":"probe_SmolLM2-1.7B_20261016T110219Z\tprobe\tHuggingFaceTB/SmolLM2-1.7B\teffd688a12921b4cc83e3312b6feb579f70f9c71\tcontamination_signal\t87\t0.3302\t562e67d2d7f9\t2026-10-16T11:02:19.082363+00:00\t2026-10-16T11:03:09.652253+00:00\t599f4ab539f7\ttorch.float16\tcontamination probe, PRESPEC.md s3, kaggle GPU fp16\n"}
+,{"stream_name":"stdout","time":488.605354612,"data":"\n"}
+,{"stream_name":"stdout","time":488.605358735,"data":"download /kaggle/working/eliza_probe_runs.zip from the Output panel\n"}
+,{"stream_name":"stderr","time":491.919136341,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":491.919171616,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":492.117452555,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":492.117492611,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":492.966831814,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":493.057332616,"data":"[NbConvertApp] Writing 22387 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":495.816865577,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":496.384866848,"data":"[NbConvertApp] Writing 298648 bytes to __results__.html\n"}
+]

@@ -1,6 +1,10 @@
 # model weights, adapters and generated data outputs are not committed
 models/
-runs/
+runs/*
+!runs/*.tsv
+!runs/*.json
+!runs/logs/
+!runs/logs/**
 *.safetensors
 *.bin
 *.pt

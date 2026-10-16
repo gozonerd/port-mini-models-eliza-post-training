@@ -1,0 +1,26 @@
+{
+  "run_id": "floor_pythia-70m_test_20261016T030248Z",
+  "config": {
+    "prompt_format": "transcript-v1",
+    "greeting": "HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM",
+    "decoding": "greedy",
+    "max_new_tokens": 48,
+    "dtype": "torch.float16",
+    "device": "cuda",
+    "normalization": "first non-empty line, upper, whitespace-collapsed"
+  },
+  "results": {
+    "A": {
+      "n": 2695,
+      "correct": 0,
+      "score": 0.0
+    },
+    "B": {
+      "n": 2695,
+      "correct": 12,
+      "score": 0.0044526901669758815
+    }
+  },
+  "model": "EleutherAI/pythia-70m",
+  "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42"
+}

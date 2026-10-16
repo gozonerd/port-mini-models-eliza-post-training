@@ -1,0 +1,39 @@
+{
+  "run_id": "probe_pythia-70m_20261016T105557Z",
+  "config": {
+    "probe_version": "probe-v1",
+    "prompt_format": "transcript-v1",
+    "greeting": "HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM",
+    "scoring": "mean per-token NLL (nats) over the line's tokens, bare context: BOS + line + newline",
+    "shuffles": 5,
+    "n_reference": 60,
+    "seed": 20261015,
+    "dtype": "torch.float16",
+    "device": "cuda",
+    "n_fixed_lines": 87,
+    "cacm_exchanges": 15,
+    "script_sha256": "fe6750220c04ef7f0e48a7a85277cce5cfc219afda798e6bda5fb22f3d1cbdab"
+  },
+  "results": {
+    "cacm_recital": {
+      "n": 15,
+      "matches": 0,
+      "score": 0.0
+    },
+    "fixed_margin": {
+      "n": 87,
+      "median": 0.9797063827514645,
+      "mean": 1.049938606941837
+    },
+    "reference_margin": {
+      "n": 60,
+      "median": 1.0614083290100096,
+      "mean": 1.0317635202407838
+    },
+    "contamination_signal": -0.0817019462585451
+  },
+  "model": "EleutherAI/pythia-70m",
+  "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42",
+  "started_utc": "2026-10-16T10:55:57.059412+00:00",
+  "finished_utc": "2026-10-16T10:56:10.186599+00:00"
+}

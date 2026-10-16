@@ -1,0 +1,52 @@
+8.8s 1 /usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+8.8s 2 _validate(nbdict, ref, version, version_minor, relax_add_props)
+10.2s 3 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+10.2s 4 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+10.2s 5 0.00s - to python to disable frozen modules.
+10.2s 6 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+11.1s 7 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+11.1s 8 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+11.1s 9 0.00s - to python to disable frozen modules.
+11.1s 10 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+14.4s 11 error: pathspec 'main' did not match any file(s) known to git
+14.4s 12 error: pathspec 'main' did not match any file(s) known to git
+14.4s 13 
+14.4s 14 error: pathspec 'main' did not match any file(s) known to git
+14.8s 15 Traceback (most recent call last):
+14.8s 16 File "<string>", line 1, in <module>
+14.8s 17 import sys;import papermill as pm;pm.execute_notebook("__notebook__.ipynb","__notebook__.ipynb",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)
+14.8s 18 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14.8s 19 File "/usr/local/lib/python3.13/dist-packages/papermill/execute.py", line 131, in execute_notebook
+14.8s 20 raise_for_execution_errors(nb, output_path)
+14.8s 21 ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+14.8s 22 File "/usr/local/lib/python3.13/dist-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+14.8s 23 raise error
+14.8s 24 papermill.exceptions.PapermillExecutionError:
+14.8s 25 ---------------------------------------------------------------------------
+14.8s 26 Exception encountered at "In [1]":
+14.8s 27 ---------------------------------------------------------------------------
+14.8s 28 CalledProcessError                        Traceback (most recent call last)
+14.8s 29 /tmp/ipykernel_16/1472217179.py in <cell line: 0>()
+14.8s 30 4 subprocess.run(['git', 'clone', '--quiet', REPO, '/kaggle/working/repo'], check=True)
+14.8s 31 5 os.chdir('/kaggle/working/repo')
+14.8s 32 ----> 6 subprocess.run(['git', 'checkout', '--quiet', COMMIT], check=True)
+14.8s 33 7 print('repo at', subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip())
+14.8s 34 8 subprocess.run(['pip', 'install', '--quiet', 'transformers>=4.45', 'accelerate', 'peft'], check=True)
+14.8s 35 
+14.8s 36 /usr/lib/python3.13/subprocess.py in run(input, capture_output, timeout, check, *popenargs, **kwargs)
+14.8s 37 575         retcode = process.poll()
+14.8s 38 576         if check and retcode:
+14.8s 39 --> 577             raise CalledProcessError(retcode, process.args,
+14.8s 40 578                                      output=stdout, stderr=stderr)
+14.8s 41 579     return CompletedProcess(process.args, retcode, stdout, stderr)
+14.8s 42 
+14.8s 43 CalledProcessError: Command '['git', 'checkout', '--quiet', 'main']' returned non-zero exit status 1.
+14.8s 44 
+17.8s 45 /usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+17.8s 46 cells[i][c] = re.sub('\\\\\|', '|', cell)
+18.0s 47 /usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+18.0s 48 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+18.9s 49 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+19.0s 50 [NbConvertApp] Writing 10138 bytes to __notebook__.ipynb
+22.3s 51 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+23.0s 52 [NbConvertApp] Writing 289929 bytes to __results__.html
