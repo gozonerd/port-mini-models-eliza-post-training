@@ -16,7 +16,7 @@ declare -a MODELS=(
 )
 mkdir -p runs
 log(){ echo "$(date -u +%FT%TZ) $*" | tee -a runs/floor.log; }
-ready(){ for m in "${MODELS[@]}"; do set -- $m; d="$HUB/models--${1/\//--}/snapshots/$2"; ls "$d"/*.safetensors >/dev/null 2>&1 || return 1; [ -e "$d/config.json" ] || return 1; done; ! pgrep -f snapshot_download >/dev/null; }
+ready(){ for m in "${MODELS[@]}"; do set -- $m; d="$HUB/models--${1/\//--}/snapshots/$2"; for f in "$d"/*.safetensors; do [ -e "$f" ] && [ "$(stat -L -c %s "$f" 2>/dev/null || echo 0)" -gt 1000000 ] || return 1; done; [ -e "$d/config.json" ] || return 1; done; ! pgrep -f snapshot_download >/dev/null; }
 log "waiting for the seven pinned snapshots"
 until ready; do sleep 30; done
 log "all seven present; starting floor runs"
