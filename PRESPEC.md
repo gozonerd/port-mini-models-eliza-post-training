@@ -1,8 +1,8 @@
-# PRESPEC — Wave 01 (ELIZA), DRAFT v01, not ratified
+# PRESPEC — Wave 01 (ELIZA), DRAFT v03, for ratification
 
-**Status:** draft for Krystal Martinez's ratification (K55: the Wave 01 prespecification is written in full by the seat and ratified by her before the first training arm runs). Section 3 is complete and may run now: it is a measurement on untrained models, like the floor (K59), and it fixes its harness choices before the numbers exist. Sections 4 to 7 wait on her hypotheses (artifact "Wave 01 Floor and Hypotheses", ledger) and are marked PENDING where they do.
+**Status:** complete draft for Krystal Martinez's ratification (K55). v01 (section 3 only) is retired unedited to `deprecated/PRESPEC_v01_DRAFT_2026-10-16.md`; v02 (same content as v03 with the hypotheses quoted from speech) is withdrawn from this repository at her ruling of 2026-10-16 that public artifacts carry her statements in edited form. Her hypotheses are in section 4, stated in her formulation and edited for print; every falsifier, every number in sections 5 to 7, and the reporting rules in section 8 are the seat's proposals and change nothing until she rules. No training arm runs before her ratification.
 
-Drafted 2026-10-16 by Flaudechamba Flaudicota A.-L. Formative Horizon v01 (Claude Fable 5.1). Edits are versioned, never silent: v02 supersedes v01 in full when she rules.
+Drafted 2026-10-16 by Flaudechamba Flaudicota A.-L. Formative Horizon v01 (Claude Fable 5.1). A ruling that changes a value produces v03; this file is not edited in place after ratification.
 
 ## 1. The decision this run informs
 
@@ -10,49 +10,71 @@ Whether a small base model can be post-trained to reproduce a 1966 rule system, 
 
 ## 2. What is already fixed and measured
 
-- Engine, data and split: `PROCEDURE.md` entries 9 and 10; `data/manifest.json` (seed 20261015; 3000 / 400 / 400 conversations).
+- Engine, data and split: `PROCEDURE.md` entries 9 and 10; `data/manifest.json` (seed 20261015; 3000 / 400 / 400 conversations; 20,451 / 2,591 / 2,695 turns).
 - Models: the seven base checkpoints pinned by revision in `FLOOR_PROTOCOL.md`.
-- Floor: measured 2026-10-16 (entry 21). A = 0.00% on all seven. B = 0.33% to 0.78%, of which 99 of 101 hits are copies of a line already in the conversation. The practical floor is zero on both framings.
-- Training data boundary: no Claude-written text (entry 3).
+- Floor (entry 21): A = 0.00% on all seven. B = 0.33% to 0.78%, 99 of 101 hits copies of a line already in the conversation. Practical floor: zero on both framings.
+- Contamination probe (entry 25, section 3 below): no model recites the article; no family effect. Capitals cost 0.9 to 1.8 nats per token over lowercase on every model.
+- Training-data boundary: no Claude-written text (entry 3).
 
-## 3. Contamination probe (REPTME.E3), fixed before measurement
+## 3. Contamination probe (REPTME.E3) — measured
 
-**Question.** How much of the DOCTOR script does each untrained base model already carry, and does it differ by family at matched size? Krystal Martinez's think-aloud of 2026-10-16 06:35 EDT (workbench K69) asks whether ELIZA material concentrated in code sources explains a family difference. The floor cannot answer it: its two non-copy hits are inside noise.
+Specification as fixed in v01 (unchanged): `tools/eliza_probe_contamination.py`, `probe-v1`; CACM recital over the article's 15 exchanges; fixed-line margin over the script's 87 slot-free reply lines against 5 seeded word-shuffles and a lowercase form; reference margin over 60 filled reply lines from the test split; contamination signal = difference of medians; comparison at matched size; no threshold for "contaminated". Measured 2026-10-16 (entry 25): recital 0 of 15 on all seven; signals −0.08 (70m), +0.06 (135M), +0.00 (160m), +0.13 (360M), +0.18 (410m), +0.22 (1b), +0.33 (1.7B); matched pairs split 2 to 1 on family, so no family effect is reported. Known limits as in v01.
 
-**Tool.** `tools/eliza_probe_contamination.py`, `probe-v1`. Nothing trains.
+## 4. Her hypotheses — her formulation, with the seat's proposed falsifiers
 
-**Three measurements per model.**
+Stated by Krystal Martinez on 2026-10-16 (06:14 and 07:16 EDT) with the floor and the contamination probe as her known exposure and no trained result in existence. The statements below are hers, edited for print; the source record is the private workbench decision log (K68, K72) and the artifact ledger. Exposure when written: the floor for all four; the probe result for H3 and H4.
 
-| Measurement | What is scored | Fixed values |
+**H1 — templates before tracking.** Every model will learn the templates (framing A) faster, and to a higher level, than it learns to track the conversation and the count of templates used (framing B). Her reason: the framing B floor is in-context copying, not knowledge of the script, which is closer to template use than to conversation tracking.
+
+Proposed test: for every arm, the A score exceeds the B score at every evaluation point, and at the final point by more than X. Falsified if any model's B score is within X of, or above, its A score at the final point, or if B reaches its final-point value at an earlier evaluation point than A does.
+
+**H2 — copying grows with size, counting follows.** Within each family, the number of copying instances in the floor grows with size; trained ability to copy the templates will therefore grow with size, and the ability to count the templates is expected to follow. Her reading of pythia-410m: an outlier at this sample size that would settle between 160m and 1b on repetition.
+
+Proposed test: within each family, the final A score and the final B score each increase from the smallest to the largest size by more than X. Falsified in a family if its largest size is within X of its smallest on either framing, or below it.
+
+**H3 — SmolLM2 outperforms Pythia, more so as size grows.** In general the SmolLM2 family will outperform the Pythia family, especially when the families are compared at their larger sizes.
+
+Proposed test: at each matched pair (135M vs 160m, 360M vs 410m, 1.7B vs 1b), SmolLM2's final B score exceeds Pythia's by more than X, and the SmolLM2-minus-Pythia difference is larger at the top pair than at the bottom pair. Falsified if Pythia is within X of, or above, SmolLM2 at the top pair, or if the difference does not grow from the bottom pair to the top pair.
+
+**H4 — first-to-last differences within each family are statistically significant.** For each family, the difference between the smallest and the largest model's measurements will be statistically significant, and more so for SmolLM2.
+
+Proposed test: for each family and each framing, the difference between the largest and the smallest size's final score, paired by conversation (the unit, REPTME.E5; Miller 2024), has a 95% interval that excludes zero, and the difference exceeds X. Falsified in a family if either framing's interval includes zero or the difference is under X. "More so for SmolLM2" is reported as a comparison of the two families' first-to-last differences, not tested.
+
+**Abstention.** On every other question she has no data to lean one way or the other, abstains, and stays open to whatever emerges. Recorded so that the absence of a hypothesis on the floor (K59), on the gap's direction beyond H1, and on the smallest size that tracks state is a decision, not an omission. Anything that emerges outside H1 to H4 is reported as exploratory.
+
+## 5. Arms — proposed values
+
+14 arms: 7 models × 2 framings, each at 2 seeds (28 training runs). LoRA via `tools/eliza_train_adapter.py`; one config file per run under `configs/`, every value stated.
+
+| Value | Proposed | Why |
 |---|---|---|
-| CACM recital | For each of the article's 15 exchanges (`tests/test_cacm.py`), greedy reply to the transcript-v1 prompt of the article's conversation up to that user line, compared to the article's reply after the floor's normalization | prompt format `transcript-v1`, greedy, 48 new tokens, first non-empty line; the article's own replies fill the history |
-| Fixed-line margin | Every slot-free reply line of the script (reassembly rules with no constituent slot, NEWKEY redirects excluded) plus the four NOMATCH messages and the greeting: mean per-token NLL verbatim, word-shuffled (mean of 5 seeded shuffles), and lowercase. Margin = NLL(shuffled) − NLL(verbatim). Reported per line and as the median | bare context: BOS + line + newline; NLL in nats averaged over the line's tokens; seed 20261015 |
-| Reference margin | The same statistic over 60 reply lines sampled (seed 20261015) from the test split whose text is not a fixed line: the script's templates filled with held-out filler words (or, for a few patterns, words from the script's own lists), which as whole lines cannot have been memorized | same scoring |
+| steps | 2,560 (two passes over the 20,451 training turns at batch 16) | a rule system with 55 patterns needs every pattern seen more than once; two epochs, not more, so the arms stay cheap enough to run twice |
+| batch_size × grad_accum | 16 × 1 (8 × 2 on the 1.7B if memory requires) | effective batch 16 everywhere |
+| learning_rate | 5e-4, constant | the smoke test's rate; loss fell from 3.71 to 2.43 in 30 steps |
+| max_seq_len | 256 (A), 512 (B) | B prompts carry history; test-split B prompts fit in 512 tokens |
+| lora_r / lora_alpha / dropout | 16 / 32 / 0.0 | double the smoke test's rank, so capacity is not the bottleneck at 70M |
+| target_modules | Pythia: query_key_value, dense, dense_h_to_4h, dense_4h_to_h; SmolLM2: q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj | all attention and MLP projections in both families, so the families are matched on what is tuned |
+| seeds | 1 and 2 | two per arm, for X and the intervals |
+| eval_points | 0, 0.25, 0.5, 0.75, 1.0 | five points per run, on 400 dev items; the final score on the full dev split |
+| final_eval_split | dev during the run; test scored once per arm, after all arms finish | the test split is read once |
+| device / precision | Kaggle T4, fp16 | as the floor |
 
-**Derived number.** Contamination signal = median fixed-line margin − median reference margin, in nats per token. The reference removes the part of the margin that template grammar alone explains.
+Nothing is tuned per model. If an arm cannot run at these values (out of memory, divergence), the change is recorded as a PROCEDURE entry before the arm is rerun, and applies to that model's both framings and both seeds.
 
-**Reading rules, fixed now.**
-- CACM recital above 0 of 15 on any model is direct evidence the article is in that model's training text; it is reported as such and the model is not dropped (the ladder is the ladder).
-- The contamination signal is reported per model with the per-line file; the family comparison is at matched size (SmolLM2-1.7B against pythia-1b; SmolLM2-360M against pythia-410m; SmolLM2-135M against pythia-160m).
-- No threshold is claimed for "contaminated"; a difference between families smaller than the spread across the three matched pairs is not reported as a family effect.
-- Precision is recorded per run (fp16 on Kaggle's T4; fp32 if run on the laptop); the two are not pooled.
+## 6. Threshold X — proposed measurement
 
-**Where it runs.** Kaggle, `notebooks/probe/eliza_kaggle_probe.ipynb`, pushed with the Kaggle CLI (`kaggle kernels push -p notebooks/probe`). Records: `runs/eliza_probe_runs.tsv` and the per-run `.lines.tsv`, `.cacm.tsv`, `.json`.
+X = 2 × the between-seed spread, in percentage points, measured on the dev split as the mean absolute difference between seed 1 and seed 2 over the two smallest arms (pythia-70m A and SmolLM2-135M A), which run first; X is fixed before any other arm is scored. The floor itself cannot supply X: greedy decoding has no seed variance (the fp16/fp32 cross-check differed by 4 items in 2,695, 0.15 points). A difference between two arms under X is not reported as a change. X is reported alongside every comparison.
 
-**Known limits.** One prompt format (REPTME.E4). Shuffling preserves the word multiset only. The bare-context NLL of a short line is dominated by its first tokens. Margins are comparable across models only as a difference from each model's own reference, never as raw nats.
+## 7. Stop rules — proposed
 
-## 4. Hypotheses — PENDING her ledger
+Each run stops at its stated step count. No run is extended because its curve looks like it is still improving. A run whose loss at the 0.25 evaluation point is not below its step-1 loss is reported as such and not retuned inside this wave. A run that fails (out of memory, crash) is rerun once at the same values after the cause is recorded; if it fails again, the model is reported as not trainable at these values and its arms are left blank, not filled from a different setting.
 
-Her saved entries (artifact ledger, collection `ledger`) are copied here verbatim at ratification, one per shape, each with its falsifier. Her think-aloud so far is recorded in the workbench (K68, K69) and is not a hypothesis until saved.
+## 8. What is reported, and in what order
 
-## 5. Arms — PENDING ratification
+1. The four curves (two families × two framings) on the test split, with X and per-conversation 95% intervals.
+2. H1 to H4, each as decided by its section 4 test, pass or fail, with the numbers.
+3. The gap (A minus B) by size and family, exploratory beyond H1.
+4. The per-keyword breakdown of B errors, to see whether trained models lean on the copying mechanism the floor showed.
+5. Anything else that emerged, labelled exploratory.
 
-14 arms: 7 models × 2 framings, LoRA via `tools/eliza_train_adapter.py`, every value stated in a config file. Values to be fixed here before any arm runs: steps, learning rate, batch, sequence length, rank, alpha, targets, evaluation points, seeds (at least two per arm, for X).
-
-## 6. Threshold X — PENDING
-
-X = 2 × the between-seed spread on the untrained baseline, in percentage points, measured before any arm (Lesson 4). A difference between two arms under X is not reported as a change.
-
-## 7. Stop rules — PENDING ratification
-
-Each arm stops at its stated step count; no arm is extended because its curve "looks like it is still improving"; an arm whose loss does not fall below its step-1 loss by the first evaluation point is reported as such and not retuned inside this wave.
+Every number traces to a row in `runs/eliza_runs.tsv` and a config under `configs/`.
