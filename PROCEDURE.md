@@ -28,3 +28,16 @@ Next: write the rule engine as a Python port of the 1966 script; verify it again
 19. **Kaggle floor attempt 02 started** by Krystal Martinez at 22:56 EDT on 2026-10-15 (02:56 UTC, 2026-10-16), her words: "reimported and restarted! woo!". Notebook at commit `b0d70c1` or later (it prints the hash it checked out). The finish time and the per-model times from the notebook's own output are recorded in a later entry when the results zip lands.
 20. **Kaggle attempt 02 abandoned, attempt 03 started.** Attempt 02 had been started on a TPU accelerator, which the script cannot use (`--device cuda`); it was stopped. Attempt 03 started on the GPU at 23:02 EDT on 2026-10-15 (03:02 UTC, 2026-10-16), her words: "alright i just started attepmt 3 now!". Timing is measured from this start.
     Correction to entry 20 (her words, 23:02 EDT: "record that time it wasn't running on a gpu at all before"): attempt 02 was not on a TPU; it was running with no accelerator at all, on Kaggle's processor. The seat inferred TPU from her question and wrote it as fact; this line corrects it.
+21. **Floor measured** (Kaggle attempt 03; her start 23:02 EDT 2026-10-15; results zip at 23:45 EDT; GPU time from first model start to last finish 34.5 minutes, T4, fp16; per-model minutes: pythia-70m 1.1, SmolLM2-135M 5.9, pythia-160m 2.0, SmolLM2-360M 6.5, pythia-410m 3.9, pythia-1b 4.8, SmolLM2-1.7B 8.5). Test split, 2,695 items per framing, protocol `FLOOR_PROTOCOL.md`, rows in `runs/eliza_runs.tsv`, per-item files beside them.
+
+    | model | A (any allowed reply) | B (exact next reply) |
+    |---|---|---|
+    | pythia-70m | 0.00% | 0.45% (laptop fp32 cross-check: 0.59%) |
+    | SmolLM2-135M | 0.00% | 0.33% (laptop fp32: 0.33%) |
+    | pythia-160m | 0.00% | 0.52% |
+    | SmolLM2-360M | 0.00% | 0.59% |
+    | pythia-410m | 0.00% | 0.45% |
+    | pythia-1b | 0.00% | 0.63% |
+    | SmolLM2-1.7B | 0.00% | 0.78% |
+
+    **Reading, with the evidence:** framing A is zero for every model, so under the `transcript-v1` prompt no base model produces a script-valid reply to a single sentence; the contamination threat (REPTME.E3) did not show up at this format. Framing B's fraction of a percent is not knowledge of the script: pooling all runs, the matched expected replies are fixed lines that recur in conversations ("I AM SORRY, I SPEAK ONLY ENGLISH" 65, "HOW DO YOU DO. PLEASE STATE YOUR PROBLEM" 22, "I AM NOT SURE I UNDERSTAND YOU FULLY" 12, …), and for SmolLM2-1.7B 20 of its 21 B hits had the expected reply already present in the conversation history. The B floor is in-context copying of an earlier reply line. For the hypotheses: the practical floor is zero on both framings; the B floor's copying mechanism is itself a thing a trained model could lean on and the per-keyword breakdown will show whether it does. The laptop runner was stopped after Kaggle's results arrived (its 70m and 135M rows stand as the fp32 cross-check; K61: the laptop is not the place for this).
