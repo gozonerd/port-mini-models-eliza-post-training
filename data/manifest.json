@@ -1,0 +1,59 @@
+{
+  "seed": 20261015,
+  "script": "third-party/ELIZA-script-DOCTOR-original-1966-CACM-appendix.txt",
+  "script_sha256": "fe6750220c04ef7f0e48a7a85277cce5cfc219afda798e6bda5fb22f3d1cbdab",
+  "wordlist": "/usr/share/dict/american-english",
+  "wordlist_sha256": "9e66281f7e51445eab6857488ff6e3d768afffadb7fb1adbef5e4617bee4a53b",
+  "wordlist_licence": "SCOWL (Kevin Atkinson), permissive; Debian package wamerican",
+  "generator_sha256": "40d1fa2087dc9bd9ab1ed9371231203291336a4839d0b8cc644d10472979b6f4",
+  "engine_sha256": "904428617d82b226d15f388644b5b92945406a2cc292212961f36707d5df55e4",
+  "filler_vocabulary_sizes": {
+    "train": 11843,
+    "dev": 11843,
+    "test": 11844
+  },
+  "splits": {
+    "train": {
+      "conversations": 3000,
+      "turns": 20451,
+      "kinds": {
+        "reply": 17255,
+        "none": 3086,
+        "memory": 39,
+        "nomatch": 71
+      }
+    },
+    "dev": {
+      "conversations": 400,
+      "turns": 2591,
+      "kinds": {
+        "none": 405,
+        "reply": 2172,
+        "memory": 4,
+        "nomatch": 10
+      }
+    },
+    "test": {
+      "conversations": 400,
+      "turns": 2695,
+      "kinds": {
+        "reply": 2236,
+        "none": 440,
+        "nomatch": 15,
+        "memory": 4
+      }
+    }
+  },
+  "files_sha256": {
+    "coverage.tsv": "c7593b81db0a25d1c5cb41d349a2dff08a4485684192d537d30ebf39c664b7b6",
+    "dev.A.jsonl": "285a70fdecccd85b8dfc7b70e75da62afa212642be30716e560804f7b9e4c224",
+    "dev.B.jsonl": "a470cca29cbdaf743ab0b45245674054ac5504e7d887c51b9e7aca1f04a3e647",
+    "dev.conversations.jsonl": "ded335a9eeb8289342c51db4c3986aaed8cfa6c3b0f720d9841f1a6360b231b6",
+    "test.A.jsonl": "1762aac30a9eb17a2924019158295832c0dd97f4707125b75334af7663f1a2ca",
+    "test.B.jsonl": "f55cce56887bfd54e638cbf70a33cb2685d467be58ae4d01678936f1eb885c63",
+    "test.conversations.jsonl": "8446707f3710915985ee6fe5eaedae7ab02482bdd7795d51612af51035a7ba66",
+    "train.A.jsonl": "3fc4b17d67f4369ca2ba3c4ac7e8c4858851b8ce4cdc1fe2c814f5067be49909",
+    "train.B.jsonl": "760240a4814fe6115bf32ea524c268195dd77d297a3b59d08ed95fa8465dae41",
+    "train.conversations.jsonl": "5ccdfc95666e66bbdb87c46319c29972b75601aab5cb58f93dc856a4159d65c3"
+  }
+}

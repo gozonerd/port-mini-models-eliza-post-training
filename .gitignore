@@ -7,3 +7,4 @@ runs/
 __pycache__/
 .venv/
 tools/hay-eliza-bin
+data/train.*.jsonl

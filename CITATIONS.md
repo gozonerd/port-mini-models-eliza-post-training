@@ -26,6 +26,10 @@ Hay, A. (2020–2026). *ELIZA* [C++ reimplementation of 1966 CACM ELIZA; verbati
 
 Apache 2.0 text: `third-party/Apache-2.0.txt`. Derived adapters published from this project must carry the Apache 2.0 notice for the base model.
 
+## Word list used for filler words in the generated data
+
+**SCOWL** — Atkinson, K. *Spell Checker Oriented Word Lists*, as shipped in Debian's `wamerican` package (`/usr/share/dict/american-english`). Permissive licence (the SCOWL notice: permission to use, copy, modify, distribute and sell, provided the copyright notice appears). Hash in `data/manifest.json` and `third-party/SOURCES.tsv`. The notice to reproduce: "Copyright 2000-2011 by Kevin Atkinson".
+
 ## Software
 
 To be added as each is used: PyTorch, Transformers, PEFT, TRL, Inspect — name, version, licence, at the time of the run.

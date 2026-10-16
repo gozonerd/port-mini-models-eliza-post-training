@@ -237,27 +237,31 @@ class KeywordRule:
             return word
         return self.substitution
 
-    def apply_transformation(self, words: List[str], tags: TagMap) -> Tuple[str, List[str], str]:
-        """Returns (action, words, link_keyword); action in complete|inapplicable|newkey|linkkey."""
+    def apply_transformation(self, words: List[str], tags: TagMap) -> Tuple[str, List[str], str, dict]:
+        """Returns (action, words, link_keyword, trace); action in complete|inapplicable|newkey|linkkey."""
         rule = None
         constituents = None
-        for t in self.trans:
+        pat_index = -1
+        for i, t in enumerate(self.trans):
             constituents = match(tags, t.decomposition, words)
             if constituents is not None:
                 rule = t
+                pat_index = i
                 break
         if rule is None:
             if not self.link_keyword:
-                return "inapplicable", words, ""
-            return "linkkey", words, self.link_keyword
+                return "inapplicable", words, "", {}
+            return "linkkey", words, self.link_keyword, {}
         rr = rule.reassembly_rules[rule.next_reassembly_rule]
+        trace = {"keyword": self.keyword, "pattern": pat_index, "template": rule.next_reassembly_rule,
+                 "n_templates": len(rule.reassembly_rules), "constituents": list(constituents)}
         rule.next_reassembly_rule += 1
         if rule.next_reassembly_rule == len(rule.reassembly_rules):
             rule.next_reassembly_rule = 0
         if len(rr) == 1 and rr[0] == "NEWKEY":
-            return "newkey", words, ""
+            return "newkey", words, "", trace
         if len(rr) == 2 and rr[0] == "=":
-            return "linkkey", words, rr[1]
+            return "linkkey", words, rr[1], trace
         if rr and rr[0] == "(":
             # (PRE (reassembly) (=reference)) stored as ["(", "PRE", "(", ..., ")", "(", "=", REF, ")", ")"]
             i = 3
@@ -267,8 +271,17 @@ class KeywordRule:
                 i += 1
             words = reassemble(reassembly, constituents)
             i += 3
-            return "linkkey", words, rr[i]
-        return "complete", reassemble(rr, constituents), ""
+            return "linkkey", words, rr[i], trace
+        return "complete", reassemble(rr, constituents), "", trace
+
+    def all_plain_replies(self, pat_index: int, constituents: List[str]) -> List[str]:
+        """Every plain (non-special) template of a pattern, instantiated: framing A's allowed set."""
+        out = []
+        for rr in self.trans[pat_index].reassembly_rules:
+            if (len(rr) == 1 and rr[0] == "NEWKEY") or (len(rr) == 2 and rr[0] == "=") or (rr and rr[0] == "("):
+                continue
+            out.append(join(reassemble(rr, constituents)))
+        return out
 
 
 @dataclass
@@ -519,6 +532,7 @@ class Eliza:
         self.mem_rule = self.script.mem_rule
         self.tags = collect_tags(self.rules)
         self.limit = 1
+        self.last: dict = {}
         self.punctuation = "".join(d for d in self.DELIMITERS if len(d) == 1 and d in "='+.)-$*/,(")
 
     def hello(self) -> str:
@@ -549,27 +563,47 @@ class Eliza:
                         keystack.append(w)
                 words[i] = r.word_substitute(w)
             i += 1
+        self.last = {"kind": "none", "limit": self.limit, "path": []}
         if not keystack:
             if self.limit == 4 and self.mem_rule.memory_exists():
+                self.last["kind"] = "memory"
                 return self.mem_rule.recall_memory()
         while keystack:
             top = keystack.pop(0)
             rule = self.rules.get(top)
             if rule is None:
+                self.last["kind"] = "nomatch"
                 return NOMATCH_MSGS[self.limit - 1]
             self.mem_rule.create_memory(top, words, self.tags)
-            act, words, link = rule.apply_transformation(words, self.tags)
+            act, words, link, trace = rule.apply_transformation(words, self.tags)
+            if trace:
+                self.last["path"].append(dict(trace, action=act))
             if act == "complete":
+                self.last["kind"] = "reply"
                 return join(words)
             if act == "inapplicable":
+                self.last["kind"] = "nomatch"
                 return NOMATCH_MSGS[self.limit - 1]
             if act == "linkkey":
                 keystack.insert(0, link)
             elif not keystack:
                 break   # NEWKEY with an empty keystack: fall through to NONE
         none_rule = self.rules[SPECIAL_RULE_NONE]
-        act, words, _ = none_rule.apply_transformation(words, self.tags)
+        act, words, _, trace = none_rule.apply_transformation(words, self.tags)
+        self.last["path"].append(dict(trace, action=act))
+        self.last["kind"] = "none"
         return join(words)
+
+    def allowed_replies(self) -> List[str]:
+        """Framing A's allowed set for the reply just produced: every plain template of the pattern that
+        completed, instantiated with the same constituents. For memory, nomatch or a reply that went
+        through a special template, the set is the single actual reply (filled in by the caller)."""
+        if self.last.get("kind") != "reply" or not self.last.get("path"):
+            return []
+        t = self.last["path"][-1]
+        if t.get("action") != "complete":
+            return []
+        return self.rules[t["keyword"]].all_plain_replies(t["pattern"], t["constituents"])
 
 
 def load_script(path: str) -> Script:
